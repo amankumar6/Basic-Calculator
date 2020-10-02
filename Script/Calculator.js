@@ -2,6 +2,19 @@
 		Welcome to my Code
 		I don't know where i'm going but I'm on my way :)
 */
+const loader = document.getElementById("loading");
+let before_loadtime = new Date().getTime();
+window.addEventListener('load', () => {
+	let after_loadtime = new Date().getTime();
+	let page_loadtime = (after_loadtime - before_loadtime) / 1000;
+	if (page_loadtime >= 2) {
+		loader.style.display = 'none';
+	} else {
+		setTimeout(() => {
+			loader.style.display = 'none';
+		}, 3100);
+	}
+});
 
 function getHistory() {
 	return document.getElementById("history-value").innerText;
