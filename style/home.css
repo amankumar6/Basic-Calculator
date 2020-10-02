@@ -1,0 +1,256 @@
+/*
+		Welcome to my Code
+		I don't know where i'm going but I'm on my way :)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333;
+    overflow: hidden;
+}
+
+.main-content {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-video video {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.calc {
+    width: 350px;
+    height: 480px;
+    margin: 0 auto;
+    top: 20px;
+    position: relative;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.main-calc {
+    width: 350px;
+    height: 480px;
+    background-color: #eaedef;
+    border-radius: 5px;
+}
+
+.main-calc-dark {
+    background: rgb(27, 40, 56);
+}
+
+.main-calc::before,
+.main-calc::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: animate 30s linear infinite;
+
+}
+
+.main-calc::after {
+    filter: blur(15px);
+    border-radius: 5px;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 300% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+
+}
+
+.custom-control {
+    margin-top: 2px;
+}
+
+.custom-control-label:hover {
+    cursor: pointer;
+}
+
+#result {
+    height: 120px;
+}
+
+#history {
+    text-align: right;
+    height: 20px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    color: #919191;
+}
+
+#output {
+    text-align: right;
+    height: 60px;
+    margin: 10px 20px;
+    font-size: 30px;
+}
+
+.output-dark {
+    color: whitesmoke;
+}
+
+#keyboard {
+    height: 400px;
+}
+
+.operator,
+.number,
+.empty {
+    width: 80px;
+    height: 60px;
+    margin: 5px 0px 5px 6px;
+    float: left;
+    border-radius: 10%;
+    border-width: 0;
+    font-weight: 300;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.number,
+.operator {
+    cursor: pointer;
+}
+
+.empty {
+    background-color: #eaedef;
+}
+
+.empty-dark {
+    background: rgb(27, 40, 56);
+}
+
+.number {
+    background-color: rgb(125, 147, 224);
+    z-index: 1;
+}
+
+.number-dark {
+    color: whitesmoke;
+    background-color: #333;
+}
+
+.number:active {
+    font-size: 17px;
+}
+
+.operator {
+    background-color: rgb(70, 219, 110);
+    transition: all 300ms ease;
+}
+
+.operator:active {
+    background-color: rgba(70, 219, 110, 0.6);
+}
+
+.operator:active,
+.number:active {
+    font-size: 13px;
+}
+
+.operator:focus,
+.number:focus,
+.empty:focus {
+    outline: 0;
+}
+
+button:nth-child(1) {
+    background-color: rgb(235, 80, 2);
+    transition: all 300ms ease;
+}
+
+button:nth-child(1):active {
+    background-color: rgba(235, 80, 2, 0.8);
+}
+
+button:nth-child(4) {
+    font-size: 20px;
+}
+
+button:nth-child(8) {
+    font-size: 20px;
+}
+
+button:nth-child(12) {
+    font-size: 20px;
+}
+
+button:nth-child(16) {
+    font-size: 20px;
+}
+
+button:nth-child(20) {
+    font-size: 20px;
+    background-color: rgb(0, 171, 238);
+    transition: all 300ms ease;
+}
+
+button:nth-child(20):active {
+    font-size: 20px;
+    background-color: rgba(0, 171, 238, 0.8);
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff !important;
+    border-color: black !important;
+    background-color: black !important;
+}
+
+/*
+It's not who I am underneath, but what I do that defines me
+
+MMMMMMMMMMMMMMMMMMMMM.                             MMMMMMMMMMMMMMMMMMMMM
+ `MMMMMMMMMMMMMMMMMMMM           M\  /M           MMMMMMMMMMMMMMMMMMMM'
+   `MMMMMMMMMMMMMMMMMMM          MMMMMM          MMMMMMMMMMMMMMMMMMM'
+     MMMMMMMMMMMMMMMMMMM-_______MMMMMMMM_______-MMMMMMMMMMMMMMMMMMM
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+     .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+                   `MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM'
+                          `MMMMMMMMMMMMMMMMMM'
+                              `MMMMMMMMMM'
+                                 MMMMMM 
+                                  MMMM
+                                   MM
+*/
