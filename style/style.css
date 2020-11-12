@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#loading {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background: #191f26 url("https://i.pinimg.com/originals/90/80/60/9080607321ab98fa3e70dd24b2513a20.gif") no-repeat center center;
+  z-index: 10;
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #333;
+  overflow: hidden;
+}
+
+.main-content {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-video video {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.calc {
+  height: 480px;
+  width: 350px;
+  margin: 0 auto;
+  top: 20px;
+  position: relative;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.main-calc {
+  height: 480px;
+  width: 350px;
+  background-color: #eaedef;
+  border-radius: 5px;
+}
+
+.main-calc::before, .main-calc::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  background-size: 400%;
+  height: calc(100% + 4px);
+  width: calc(100% + 4px);
+  z-index: -1;
+  -webkit-animation: animate 30s linear infinite;
+          animation: animate 30s linear infinite;
+}
+
+.main-calc::after {
+  -webkit-filter: blur(15px);
+          filter: blur(15px);
+  border-radius: 5px;
+}
+
+.main-calc-dark {
+  background: #1b2838;
+}
+
+@-webkit-keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.custom-control {
+  margin-top: 2px;
+}
+
+.custom-control-label:hover {
+  cursor: pointer;
+}
+
+#result {
+  height: 120px;
+}
+
+#history {
+  text-align: right;
+  height: 20px;
+  margin: 0 20px;
+  padding-top: 20px;
+  font-size: 15px;
+  color: #919191;
+}
+
+#output {
+  text-align: right;
+  height: 60px;
+  margin: 10px 20px;
+  font-size: 30px;
+}
+
+.output-dark {
+  color: whitesmoke;
+}
+
+#keyboard {
+  height: 400px;
+}
+
+.operator,
+.number,
+.empty {
+  height: 60px;
+  width: 80px;
+  margin: 5px 0px 5px 6px;
+  float: left;
+  border-radius: 10%;
+  border-width: 0;
+  font-weight: 300;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.number,
+.operator {
+  cursor: pointer;
+}
+
+.empty {
+  background-color: #eaedef;
+}
+
+.empty-dark {
+  background: #1b2838;
+}
+
+.number {
+  background-color: #7d93e0;
+  z-index: 1;
+}
+
+.number:active {
+  font-size: 17px;
+}
+
+.number-dark {
+  color: whitesmoke;
+  background-color: #333;
+}
+
+.operator {
+  background-color: #46db6e;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.operator:active {
+  background-color: rgba(70, 219, 110, 0.6);
+}
+
+.operator:active,
+.number:active {
+  font-size: 13px;
+}
+
+.operator:focus,
+.number:focus,
+.empty:focus {
+  outline: 0;
+}
+
+button:nth-child(1) {
+  background-color: #eb5002;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+button:nth-child(1):active {
+  background-color: rgba(235, 80, 2, 0.8);
+}
+
+button:nth-child(4) {
+  font-size: 20px;
+}
+
+button:nth-child(8) {
+  font-size: 20px;
+}
+
+button:nth-child(12) {
+  font-size: 20px;
+}
+
+button:nth-child(16) {
+  font-size: 20px;
+}
+
+button:nth-child(20) {
+  font-size: 20px;
+  background-color: #00abee;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+button:nth-child(20):active {
+  font-size: 20px;
+  background-color: rgba(0, 171, 238, 0.8);
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff !important;
+  border-color: black !important;
+  background-color: black !important;
+}
+/*# sourceMappingURL=style.css.map */

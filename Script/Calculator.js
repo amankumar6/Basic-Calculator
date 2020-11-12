@@ -1,14 +1,24 @@
-const loader = document.getElementById("loading");
-let before_loadtime = new Date().getTime();
+const loader = document.getElementById("loading"),
+	operator = document.getElementsByClassName("operator"),
+	number = document.getElementsByClassName("number"),
+	input = document.querySelector(".custom-control-input"),
+	cal = document.querySelector(".main-calc"),
+	video = document.getElementById('video'),
+	ot = document.getElementById("output"),
+	empty = document.querySelectorAll(".empty");
+
+let before_loadtime = new Date().getTime(),
+	bool = false;
+
 window.addEventListener('load', () => {
 	let after_loadtime = new Date().getTime();
 	let page_loadtime = (after_loadtime - before_loadtime) / 1000;
-	if (page_loadtime >= 2) {
+	if (page_loadtime >= 1) {
 		loader.style.display = 'none';
 	} else {
 		setTimeout(() => {
 			loader.style.display = 'none';
-		}, 3100);
+		}, 2000);
 	}
 });
 
@@ -36,29 +46,29 @@ function getFormattedNumber(num) {
 	if (num == "-") {
 		return "";
 	}
-	var n = Number(num);
-	var value = n.toLocaleString("en");
+	let n = Number(num);
+	let value = n.toLocaleString("en");
 	return value;
 }
 
 function reverseNumberFormat(num) {
 	return Number(num.replace(/,/g, ''));
 }
-var operator = document.getElementsByClassName("operator");
-for (var i = 0; i < operator.length; i++) {
+
+for (let i = 0; i < operator.length; i++) {
 	operator[i].addEventListener('click', function () {
 		if (this.id == "clear") {
 			printHistory("");
 			printOutput("");
 		} else if (this.id == "backspace") {
-			var output = reverseNumberFormat(getOutput()).toString();
+			let output = reverseNumberFormat(getOutput()).toString();
 			if (output) {
 				output = output.substr(0, output.length - 1);
 				printOutput(output);
 			}
 		} else {
-			var output = getOutput();
-			var history = getHistory();
+			let output = getOutput();
+			let history = getHistory();
 			if (output == "" && history != "") {
 				if (isNaN(history[history.length - 1])) {
 					history = history.substr(0, history.length - 1);
@@ -68,7 +78,7 @@ for (var i = 0; i < operator.length; i++) {
 				output = output == "" ? output : reverseNumberFormat(output);
 				history = history + output;
 				if (this.id == "=") {
-					var result = eval(history);
+					let result = eval(history);
 					printOutput(result);
 					printHistory("");
 				} else {
@@ -81,10 +91,10 @@ for (var i = 0; i < operator.length; i++) {
 
 	});
 }
-var number = document.getElementsByClassName("number");
-for (var i = 0; i < number.length; i++) {
+
+for (let i = 0; i < number.length; i++) {
 	number[i].addEventListener('click', function () {
-		var output = reverseNumberFormat(getOutput());
+		let output = reverseNumberFormat(getOutput());
 		if (output != NaN) {
 			output = output + this.id;
 			printOutput(output);
@@ -92,16 +102,7 @@ for (var i = 0; i < number.length; i++) {
 	});
 }
 
-let input = document.querySelector(".custom-control-input")
-let cal = document.querySelector(".main-calc");
-let video = document.getElementById('video');
-let source = document.createElement('source');
-let ot = document.getElementById("output");
-let empty = document.querySelectorAll(".empty");
-let bool = false;
-
-source.setAttribute('src', 'src/video/light.webm');
-video.appendChild(source);
+video.src = "https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202323/Basic-Calculator/light_b1jros.webm";
 video.play();
 
 input.addEventListener("change", () => {
@@ -114,17 +115,16 @@ input.addEventListener("change", () => {
 		number[i].classList.toggle("number-dark")
 	}
 
-	if (!bool) {
+	if (bool) {
 		video.pause();
-		source.setAttribute('src', 'src/video/dark.mp4');
+		video.src = "https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202323/Basic-Calculator/light_b1jros.webm";
 		video.load();
 		video.play();
-		bool = !bool;
 	} else {
 		video.pause();
-		source.setAttribute('src', 'src/video/light.webm');
+		video.src = "https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202334/Basic-Calculator/dark_wcbgar.mp4"
 		video.load();
 		video.play();
-		bool = !bool;
 	}
+	bool = !bool;
 })
