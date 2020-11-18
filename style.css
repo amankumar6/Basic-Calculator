@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+:root {
+    --bgColor: #eaedef;
+    --text: black;
+    --number: #7d93e0;
+    --operator: #46db6e;
+    --clear: #eb5002;
+    --ans: #00abee;
+}
+
 * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 #loading {
     position: fixed;
-    width: 100%;
     height: 100vh;
-    background: white url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6d391369321565.5b7d0d570e829.gif') no-repeat center center;
+    width: 100%;
+    background: #191f26 url("https://i.pinimg.com/originals/90/80/60/9080607321ab98fa3e70dd24b2513a20.gif") no-repeat center center;
     z-index: 10;
 }
 
@@ -23,8 +35,14 @@ body {
 
 .main-content {
     height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -32,8 +50,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100vh;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -43,8 +61,8 @@ body {
 }
 
 .calc {
-    width: 350px;
     height: 480px;
+    width: 350px;
     margin: 0 auto;
     top: 20px;
     position: relative;
@@ -53,14 +71,10 @@ body {
 }
 
 .main-calc {
-    width: 350px;
     height: 480px;
-    background-color: #eaedef;
+    width: 350px;
+    background-color: var(--bgColor);;
     border-radius: 5px;
-}
-
-.main-calc-dark {
-    background: rgb(27, 40, 56);
 }
 
 .main-calc::before,
@@ -71,19 +85,34 @@ body {
     left: -2px;
     background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
     border-radius: 5px;
-    width: 100%;
     height: 100%;
+    width: 100%;
     background-size: 400%;
-    width: calc(100% + 4px);
     height: calc(100% + 4px);
+    width: calc(100% + 4px);
     z-index: -1;
+    -webkit-animation: animate 30s linear infinite;
     animation: animate 30s linear infinite;
-
 }
 
 .main-calc::after {
+    -webkit-filter: blur(15px);
     filter: blur(15px);
     border-radius: 5px;
+}
+
+@-webkit-keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 300% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
 @keyframes animate {
@@ -98,7 +127,6 @@ body {
     100% {
         background-position: 0 0;
     }
-
 }
 
 .custom-control {
@@ -127,6 +155,7 @@ body {
     height: 60px;
     margin: 10px 20px;
     font-size: 30px;
+    color: var(--text);
 }
 
 .output-dark {
@@ -140,8 +169,8 @@ body {
 .operator,
 .number,
 .empty {
-    width: 80px;
     height: 60px;
+    width: 80px;
     margin: 5px 0px 5px 6px;
     float: left;
     border-radius: 10%;
@@ -157,21 +186,13 @@ body {
 }
 
 .empty {
-    background-color: #eaedef;
-}
-
-.empty-dark {
-    background: rgb(27, 40, 56);
+    background-color: var(--bgColor);
 }
 
 .number {
-    background-color: rgb(125, 147, 224);
+    background-color: var(--number);
+    color: var(--text);
     z-index: 1;
-}
-
-.number-dark {
-    color: whitesmoke;
-    background-color: #333;
 }
 
 .number:active {
@@ -179,7 +200,8 @@ body {
 }
 
 .operator {
-    background-color: rgb(70, 219, 110);
+    background-color: var(--operator);
+    -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
 }
 
@@ -199,7 +221,8 @@ body {
 }
 
 button:nth-child(1) {
-    background-color: rgb(235, 80, 2);
+    background-color: var(--clear);
+    -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
 }
 
@@ -225,7 +248,8 @@ button:nth-child(16) {
 
 button:nth-child(20) {
     font-size: 20px;
-    background-color: rgb(0, 171, 238);
+    background-color: var(--ans);
+    -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
 }
 

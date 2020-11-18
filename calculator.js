@@ -1,6 +1,6 @@
 const loader = document.getElementById("loading"),
-	operator = document.getElementsByClassName("operator"),
-	number = document.getElementsByClassName("number"),
+	operator = document.querySelectorAll(".operator"),
+	number = document.querySelectorAll(".number"),
 	input = document.querySelector(".custom-control-input"),
 	cal = document.querySelector(".main-calc"),
 	video = document.getElementById('video'),
@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
 	} else {
 		setTimeout(() => {
 			loader.style.display = 'none';
-		}, 2000);
+		}, 0);
 	}
 });
 
@@ -35,11 +35,7 @@ function getOutput() {
 }
 
 function printOutput(num) {
-	if (num == "") {
-		document.getElementById("output-value").innerText = num;
-	} else {
-		document.getElementById("output-value").innerText = getFormattedNumber(num);
-	}
+	(num == "") ? document.getElementById("output-value").innerText = num : document.getElementById("output-value").innerText = getFormattedNumber(num);
 }
 
 function getFormattedNumber(num) {
@@ -55,8 +51,8 @@ function reverseNumberFormat(num) {
 	return Number(num.replace(/,/g, ''));
 }
 
-for (let i = 0; i < operator.length; i++) {
-	operator[i].addEventListener('click', function () {
+operator.forEach((element)=>{
+	element.addEventListener('click', function () {
 		if (this.id == "clear") {
 			printHistory("");
 			printOutput("");
@@ -90,41 +86,38 @@ for (let i = 0; i < operator.length; i++) {
 		}
 
 	});
-}
+})
 
-for (let i = 0; i < number.length; i++) {
-	number[i].addEventListener('click', function () {
+number.forEach((element)=>{
+	element.addEventListener('click', function () {
 		let output = reverseNumberFormat(getOutput());
 		if (output != NaN) {
 			output = output + this.id;
 			printOutput(output);
 		}
 	});
-}
+})
 
 video.src = "https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202323/Basic-Calculator/light_b1jros.webm";
 video.play();
 
 input.addEventListener("change", () => {
-	cal.classList.toggle("main-calc-dark");
-	ot.classList.toggle("output-dark");
-	for (let i = 0; i < empty.length; i++) {
-		empty[i].classList.toggle("empty-dark")
-	}
-	for (let i = 0; i < number.length; i++) {
-		number[i].classList.toggle("number-dark")
-	}
-
 	if (bool) {
 		video.pause();
 		video.src = "https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202323/Basic-Calculator/light_b1jros.webm";
 		video.load();
 		video.play();
+		document.documentElement.style.setProperty('--bgColor', '#eaedef');
+		document.documentElement.style.setProperty('--text', 'black');
+		document.documentElement.style.setProperty('--number', '#7d93e0');
 	} else {
 		video.pause();
 		video.src = "https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202334/Basic-Calculator/dark_wcbgar.mp4"
 		video.load();
 		video.play();
+		document.documentElement.style.setProperty('--bgColor', '#1b2838');
+		document.documentElement.style.setProperty('--text', 'whitesmoke');
+		document.documentElement.style.setProperty('--number', '#333');
 	}
 	bool = !bool;
 })
