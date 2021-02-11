@@ -114,7 +114,7 @@ input.addEventListener('change', () => {
     } else {
         video.pause();
         video.src =
-            'https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202334/Basic-Calculator/dark_wcbgar.mp4';
+            'https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202334/Basic-Calculator/dark.mp4';
         video.load();
         video.play();
         document.documentElement.style.setProperty('--bgColor', '#1b2838');
