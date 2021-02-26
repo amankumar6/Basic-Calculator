@@ -105,7 +105,7 @@ input.addEventListener('change', () => {
     if (bool) {
         video.pause();
         video.src =
-            'https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202334/Basic-Calculator/dark.mp4';
+            'https://res.cloudinary.com/dbvthtwhc/video/upload/v1605202334/Basic-Calculator/light.webm';
         video.load();
         video.play();
         document.documentElement.style.setProperty('--bgColor', '#eaedef');
